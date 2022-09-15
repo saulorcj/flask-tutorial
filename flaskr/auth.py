@@ -26,7 +26,7 @@ def register():
         if error is None:
             try:
                 db.execute(
-                    "INSERT INTO user (username, password) VALUES (?, ?)"
+                    "INSERT INTO user (username, password) VALUES (?, ?)",
                     (username, generate_password_hash(password)),
                 )
                 db.commit()
@@ -62,7 +62,7 @@ def login():
         
         flash(error)
 
-    return render_template('auth/login;html')
+    return render_template('auth/login.html')
 
 @bp.before_app_request
 def load_logged_in_user():
